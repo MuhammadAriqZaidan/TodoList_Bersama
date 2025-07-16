@@ -8,6 +8,11 @@ use App\Http\Controllers\AuthController;
 use App\Models\User;
 
 
+
+Route::get('/', function () {
+    return redirect('/todos'); // atau sesuaikan dengan halaman utama kamu
+});
+
 // --- ✅ AUTH WEB (blade) ---
 Route::view('/login', 'auth.login')->name('login'); // tampilan login
 Route::view('/register', 'auth.register')->name('register'); // opsional: tampilan register jika ada blade-nya
