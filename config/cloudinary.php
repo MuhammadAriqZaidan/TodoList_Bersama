@@ -23,6 +23,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | CORE Cloudinary Configuration - PENTING! TAMBAHKAN INI!
+    |--------------------------------------------------------------------------
+    | Ini adalah kredensial dasar yang dibutuhkan oleh Cloudinary SDK.
+    |
+    */
+    'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+    'api_key' => env('CLOUDINARY_KEY'), // Menggunakan CLOUDINARY_KEY sesuai .env dan Railway Anda
+    'api_secret' => env('CLOUDINARY_SECRET'), // Menggunakan CLOUDINARY_SECRET sesuai .env dan Railway Anda
+    'secure' => env('CLOUDINARY_SECURE', true), // Pastikan ini juga ada
+
+    /*
+    |--------------------------------------------------------------------------
     | Cloudinary Configuration
     |--------------------------------------------------------------------------
     |
@@ -31,7 +43,7 @@ return [
     |
     |
     */
-    'cloud_url' => env('CLOUDINARY_URL', 'cloudinary://'.env('CLOUDINARY_KEY').':'.env('CLOUDINARY_SECRET').'@'.env('CLOUDINARY_CLOUD_NAME')),
+    'cloud_url' => env('CLOUDINARY_URL', 'cloudinary://' . env('CLOUDINARY_KEY') . ':' . env('CLOUDINARY_SECRET') . '@' . env('CLOUDINARY_CLOUD_NAME')),
 
     /**
      * Upload Preset From Cloudinary Dashboard
