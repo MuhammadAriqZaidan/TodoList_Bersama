@@ -45,7 +45,7 @@ class TodoWebController extends Controller
         if ($request->hasFile('attachment')) {
             try {
                 // Tambahkan dd() di sini untuk melihat pesan error langsung
-                // dd(config('cloudinary'));
+                dd(config('cloudinary'));
                 $uploadedFile = Cloudinary::upload($request->file('attachment')->getRealPath(), [
                     'folder' => 'todo_attachments'
                 ]);
