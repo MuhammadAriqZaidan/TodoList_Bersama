@@ -33,7 +33,6 @@ class TodoWebController extends Controller
 
     public function store(Request $request)
     {
-        dd(config('cloudinary'));
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -50,6 +49,7 @@ class TodoWebController extends Controller
                 ]);
                 $attachmentUrl = $uploadedFile->getSecurePath();
             } catch (\Exception $e) {
+                dd($e->getMessage());
                 // Log error ke Laravel log (akan terlihat di log Railway)
                 Log::error("Cloudinary Upload Error: " . $e->getMessage());
 
