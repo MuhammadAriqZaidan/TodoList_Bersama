@@ -44,18 +44,20 @@ class TodoWebController extends Controller
 
         if ($request->hasFile('attachment')) {
             try {
-                // Tambahkan dd() di sini untuk melihat pesan error langsung
-                dd(config('cloudinary'));
                 $uploadedFile = Cloudinary::upload($request->file('attachment')->getRealPath(), [
                     'folder' => 'todo_attachments'
                 ]);
                 $attachmentUrl = $uploadedFile->getSecurePath();
             } catch (\Exception $e) {
-                dd($e->getMessage()); // DEBUG: Tambahkan ini SINI untuk melihat pesan error
+                // Log error ke Laravel log (akan terlihat di log Railway)
                 Log::error("Cloudinary Upload Error: " . $e->getMessage());
+
+                // Redirect kembali dengan pesan error lebih spesifik
+                // Anda bisa mengembalikan error validasi kustom di sini
                 return back()->withInput()->withErrors(['attachment' => 'Gagal mengunggah lampiran: ' . $e->getMessage()]);
             }
         }
+
         Todo::create([
             'user_id' => Auth::id(),
             'title' => $request->title,

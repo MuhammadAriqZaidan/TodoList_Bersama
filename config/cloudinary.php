@@ -8,55 +8,18 @@
  */
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cloudinary Configuration
-    |--------------------------------------------------------------------------
-    |
-    | An HTTP or HTTPS URL to notify your application (a webhook) when the process of uploads, deletes, and any API
-    | that accepts notification_url has completed.
-    |
-    |
-    */
     'notification_url' => env('CLOUDINARY_NOTIFICATION_URL'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | CORE Cloudinary Configuration - PENTING! TAMBAHKAN INI!
-    |--------------------------------------------------------------------------
-    | Ini adalah kredensial dasar yang dibutuhkan oleh Cloudinary SDK.
-    |
-    */
+    // Kredensial utama
     'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-    'api_key' => env('CLOUDINARY_KEY'), // Menggunakan CLOUDINARY_KEY sesuai .env dan Railway Anda
-    'api_secret' => env('CLOUDINARY_SECRET'), // Menggunakan CLOUDINARY_SECRET sesuai .env dan Railway Anda
-    'secure' => env('CLOUDINARY_SECURE', true), // Pastikan ini juga ada
+    'api_key' => env('CLOUDINARY_KEY'),
+    'api_secret' => env('CLOUDINARY_SECRET'),
+    'secure' => env('CLOUDINARY_SECURE', true),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Cloudinary Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure your Cloudinary settings. Cloudinary is a cloud hosted
-    | media management service for all file uploads, storage, delivery and transformation needs.
-    |
-    |
-    */
+    // Cloud URL (gunakan fallback jika CLOUDINARY_URL tidak ada di .env)
     'cloud_url' => env('CLOUDINARY_URL', 'cloudinary://' . env('CLOUDINARY_KEY') . ':' . env('CLOUDINARY_SECRET') . '@' . env('CLOUDINARY_CLOUD_NAME')),
 
-    /**
-     * Upload Preset From Cloudinary Dashboard
-     */
     'upload_preset' => env('CLOUDINARY_UPLOAD_PRESET'),
-
-    /**
-     * Route to get cloud_image_url from Blade Upload Widget
-     */
     'upload_route' => env('CLOUDINARY_UPLOAD_ROUTE'),
-
-    /**
-     * Controller action to get cloud_image_url from Blade Upload Widget
-     */
     'upload_action' => env('CLOUDINARY_UPLOAD_ACTION'),
 ];
