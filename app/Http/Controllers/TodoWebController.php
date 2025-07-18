@@ -33,6 +33,7 @@ class TodoWebController extends Controller
 
     public function store(Request $request)
     {
+        dd(config('cloudinary'));
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
